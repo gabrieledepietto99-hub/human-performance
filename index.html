@@ -61,11 +61,11 @@ h1 em,h2 em{font-style:italic}
 .choose{padding-top:22px;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .hero-top{display:flex;align-items:center;gap:14px;margin-right:-24px}
 .hero-top .curve{flex:1;height:30px;min-width:0}
-.choose h1{margin:28px 0 14px}
-.choose .lead{margin-bottom:24px}
+.choose h1{margin:20px 0 12px}
+.choose .lead{margin-bottom:16px}
 .paths{display:grid;gap:14px}
 @media (min-width:720px){.paths{grid-template-columns:1fr 1fr}}
-.path{position:relative;display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;padding:20px 22px;border:1.5px solid var(--line);border-radius:22px;background:var(--paper);transition:border-color .2s, transform .1s}
+.path{position:relative;display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;padding:18px 22px;border:1.5px solid var(--line);border-radius:22px;background:var(--paper);transition:border-color .2s, transform .1s}
 .path:hover{border-color:var(--curve)}
 .path:active{transform:scale(.995)}
 .path .pt{font-family:var(--serif);font-size:26px;line-height:1.15;color:var(--ink);padding-right:36px}
@@ -73,10 +73,15 @@ h1 em,h2 em{font-style:italic}
 .path .go{margin-top:10px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;background:var(--sage);color:#fff;font-weight:500;font-size:15px}
 .path svg{position:absolute;top:22px;right:20px;width:30px;height:22px;overflow:visible}
 .path svg path{fill:none;stroke:var(--curve);stroke-width:1.4;stroke-linecap:round}
-.seats{margin-top:20px;font-size:15px;color:var(--ink-2);display:flex;align-items:flex-start;gap:10px}
-.seats::before{content:"";flex:none;margin-top:9px;width:7px;height:7px;border-radius:50%;background:var(--sage)}
-.seats.out::before{background:#A8A193}
-.deadline{margin:4px 0 0 17px;font-size:14px;color:var(--ink-2)}
+/* Stato reale delle prenotazioni: posti (da configurazione) e giorni alla chiusura (calcolati dalla data reale) */
+.status{display:flex;flex-direction:column;align-items:flex-start;gap:7px;background:var(--ivory-2);border-radius:16px;padding:11px 16px;margin:0 0 18px}
+.status .seatdots{display:flex;gap:5px;flex:none;order:2}
+.status .seatdots i{width:10px;height:10px;border-radius:50%;background:var(--sage)}
+.status .seatdots i.taken{background:transparent;box-shadow:inset 0 0 0 1.5px #A8A193}
+.status strong{display:block;font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.35}
+.status span.when{display:block;font-size:14px;color:var(--ink-2);line-height:1.4;margin-top:2px}
+.status > div{order:1}
+.status.out{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
 
 /* PRESENTAZIONE DEL RAMO */
 .topbar{padding:16px 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
@@ -164,6 +169,7 @@ h1 em,h2 em{font-style:italic}
     <p class="tagline">Uno spazio per comprenderti e scegliere il tuo prossimo passo.</p>
     <h1>Da dove vuoi <em>partire?</em></h1>
     <p class="lead">Da un’esperienza che senti ancora presente oppure da qualcosa che vorresti comprendere o cambiare. Non devi avere già tutto chiaro per iniziare.</p>
+    <div class="status" data-status role="status"></div>
 
     <div class="paths">
       <button type="button" class="path" data-action="pick" data-ramo="sconfitta">
@@ -179,8 +185,6 @@ h1 em,h2 em{font-style:italic}
         <span class="go">Parti da qui <span aria-hidden="true">→</span></span>
       </button>
     </div>
-    <p class="seats" id="seatsLine"></p>
-    <p class="deadline" id="deadlineLine" hidden></p>
 
     <footer class="foot" style="margin-top:44px">
       <span>Gabriele De Pietto</span>
@@ -197,10 +201,11 @@ h1 em,h2 em{font-style:italic}
       <span class="brand sm">HUMAN PERFORMANCE</span>
     </div>
     <section class="hero">
-      <p class="eyebrow" data-seats-eyebrow></p>
+      <p class="eyebrow">Sessione gratuita · individuale</p>
       <h1>C’è una sconfitta che senti ancora presente <em>dentro di te?</em></h1>
       <p class="lead">Una delusione o un risultato mancato possono lasciare domande aperte. Ti propongo uno spazio di confronto per osservare quell’esperienza, fare chiarezza e individuare un primo passo concreto.</p>
       <div class="cta">
+        <div class="status" data-status role="status"></div>
         <div class="meta" data-meta></div>
         <button class="btn" data-action="start">Inizia le 4 domande <span class="arr" aria-hidden="true">→</span></button>
         <p class="micro">Circa un minuto. Non serve raccontare l’accaduto nel questionario.</p>
@@ -246,10 +251,11 @@ h1 em,h2 em{font-style:italic}
       <span class="brand sm">HUMAN PERFORMANCE</span>
     </div>
     <section class="hero">
-      <p class="eyebrow" data-seats-eyebrow></p>
+      <p class="eyebrow">Sessione gratuita · individuale</p>
       <h1>Non devi avere già tutto chiaro <em>per iniziare.</em></h1>
       <p class="lead">Puoi partire da un obiettivo, una difficoltà, una voglia di cambiare o dalla sensazione che qualcosa non vada. Uno spazio di confronto può aiutarti a mettere a fuoco ciò che vuoi affrontare e individuare un primo passo.</p>
       <div class="cta">
+        <div class="status" data-status role="status"></div>
         <div class="meta" data-meta></div>
         <button class="btn" data-action="start">Inizia le 4 domande <span class="arr" aria-hidden="true">→</span></button>
         <p class="micro">Circa un minuto. Non serve raccontare tutto adesso.</p>
@@ -323,12 +329,13 @@ const CONFIG = {
   modalita: "Online · Google Meet o Zoom",
   urlPrivacy: "privacy.html",  // informativa privacy e cookie (file accanto a questa pagina)
 
-  testoPosti: "3 sessioni gratuite su prenotazione.",
+  postiTotali: 6,             // 3 iniziali + 3 aggiunti il 10 ottobre
+  testoPosti: "Sessioni gratuite su prenotazione.",
   postiEsauriti: false,        // true → "Posti esauriti" e nessun invito alla prenotazione
 
   // Opzionali, spenti. Usali solo se corrispondono alla realtà.
-  chiusuraPrenotazioni: "2026-10-11T23:59:00+02:00",  // campagna 5–11 ottobre: mostrata e applicata in automatico
-  postiPrenotati: 1,        // numero reale, aggiornato a mano quando ricevi una prenotazione (0–3)
+  chiusuraPrenotazioni: "2026-10-18T23:59:00+02:00",  // campagna estesa: 5–18 ottobre, mostrata e applicata in automatico
+  postiPrenotati: 2,        // numero reale, aggiornato a mano quando ricevi una prenotazione (0–3)
 
   // Salvataggio delle risposte su Google Sheet: spento finché non incolli qui l'URL dell'app web
   // di Apps Script (finisce con /exec). Istruzioni in google-sheet/ISTRUZIONI.md.
@@ -337,7 +344,7 @@ const CONFIG = {
 };
 
 /* ---------- Stato delle prenotazioni (solo da configurazione, nessun conteggio simulato) ---------- */
-const TOTALE_POSTI = 3;
+const TOTALE_POSTI = CONFIG.postiTotali || 3;
 function statoPosti(){
   const chiusa = CONFIG.chiusuraPrenotazioni && Date.now() > new Date(CONFIG.chiusuraPrenotazioni).getTime();
   const prenotati = Number.isInteger(CONFIG.postiPrenotati) ? Math.min(Math.max(CONFIG.postiPrenotati,0),TOTALE_POSTI) : null;
@@ -415,18 +422,33 @@ const durataTxt = () => CONFIG.durata || "[DURATA]";
 const modalitaTxt = () => CONFIG.modalita || "[MODALITÀ]";
 const fmtData = iso => new Date(iso).toLocaleDateString("it-IT", { weekday:"long", day:"numeric", month:"long", timeZone:"Europe/Rome" });
 
+/* Giorni di calendario (ora di Roma) tra oggi e la chiusura: 0 = ultimo giorno */
+function giorniAllaChiusura(){
+  if (!CONFIG.chiusuraPrenotazioni) return null;
+  const g = d => { const [y,m,dd] = new Date(d).toLocaleDateString("en-CA",{timeZone:"Europe/Rome"}).split("-").map(Number); return Date.UTC(y,m-1,dd); };
+  return Math.round((g(CONFIG.chiusuraPrenotazioni) - g(Date.now())) / 86400000);
+}
+function renderStatus(){
+  const st = statoPosti(), liberi = st.esaurito ? 0 : (st.prenotati !== null ? TOTALE_POSTI - st.prenotati : TOTALE_POSTI);
+  let titolo, quando = "";
+  if (st.esaurito) titolo = "Posti esauriti";
+  else if (st.chiusa) titolo = "Le prenotazioni sono chiuse";
+  else if (st.prenotati) titolo = liberi === 1 ? `Resta 1 sessione gratuita su ${TOTALE_POSTI}` : `Restano ${liberi} sessioni gratuite su ${TOTALE_POSTI}`;
+  else titolo = CONFIG.testoPosti.replace(/\.$/, "");
+  if (st.aperto && CONFIG.chiusuraPrenotazioni) {
+    const n = giorniAllaChiusura();
+    const resto = n <= 0 ? "oggi è l’ultimo giorno" : n === 1 ? "chiude domani" : `chiude tra ${n} giorni`;
+    quando = `Fino a ${fmtData(CONFIG.chiusuraPrenotazioni)} · ${resto}`;
+  }
+  const dots = Array.from({length:TOTALE_POSTI}, (_,i) => `<i class="${i < liberi ? "" : "taken"}"></i>`).join("");
+  document.querySelectorAll("[data-status]").forEach(el => {
+    el.classList.toggle("out", !st.aperto);
+    el.setAttribute("aria-label", `${titolo}. ${quando}`);
+    el.innerHTML = `<span class="seatdots" aria-hidden="true">${dots}</span><div><strong>${esc(titolo)}</strong>${quando ? `<span class="when">${esc(quando)}</span>` : ""}</div>`;
+  });
+}
 function renderStatic(){
-  const st = statoPosti();
-  // Posti
-  const line = $("#seatsLine");
-  if (st.esaurito) { line.textContent = "Posti esauriti."; line.classList.add("out"); }
-  else if (st.chiusa) { line.textContent = "Le prenotazioni sono chiuse."; line.classList.add("out"); }
-  else if (st.prenotati !== null && st.prenotati > 0) { const n = TOTALE_POSTI - st.prenotati; line.textContent = `${n === 1 ? "Resta 1 sessione gratuita" : `Restano ${n} sessioni gratuite`} su ${TOTALE_POSTI}.`; }
-  else line.textContent = CONFIG.testoPosti;
-  const dl = $("#deadlineLine");
-  dl.hidden = !(CONFIG.chiusuraPrenotazioni && st.aperto);
-  if (!dl.hidden) dl.textContent = `Prenotazioni aperte fino a ${fmtData(CONFIG.chiusuraPrenotazioni)}.`;
-  document.querySelectorAll("[data-seats-eyebrow]").forEach(e => e.textContent = st.esaurito ? "Posti esauriti" : st.chiusa ? "Prenotazioni chiuse" : "3 sessioni gratuite");
+  renderStatus();
   // Durata e modalità vicino al pulsante
   document.querySelectorAll("[data-meta]").forEach(m => m.innerHTML =
     `<span><small>DURATA</small>${esc(durataTxt())}</span><span><small>MODALITÀ</small>${esc(modalitaTxt())}</span>`);
@@ -542,9 +564,10 @@ function renderResult(){
     return;
   }
   // Link normale, stessa scheda: niente pop-up né iframe. Il clic non è una prenotazione.
-  acts.innerHTML = `<div class="book"><a class="btn" id="bookLink" href="${esc(CONFIG.linkPrenotazione)}" rel="noreferrer">Scegli giorno e ora <span class="arr" aria-hidden="true">→</span></a>
+  acts.innerHTML = `<div class="status" data-status role="status"></div><div class="book"><a class="btn" id="bookLink" href="${esc(CONFIG.linkPrenotazione)}" rel="noreferrer">Scegli giorno e ora <span class="arr" aria-hidden="true">→</span></a>
     <p class="micro">Si aprirà Google Calendar per completare la prenotazione.</p>
     ${CONFIG.endpointSalvataggio ? `<p class="micro" style="margin-top:6px">Le tue 4 risposte verranno inviate a Gabriele per preparare la sessione. <a href="${esc(CONFIG.urlPrivacy || "#")}" target="_blank" rel="noopener">Informativa</a></p>` : ""}</div>`;
+  renderStatus();
   $("#bookLink").addEventListener("click", () => {
     track("calendar_open", { ramo:r });
     salvaRisposte(r); // spento finché non c'è un servizio; non blocca mai la navigazione
