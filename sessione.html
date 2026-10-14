@@ -389,6 +389,29 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
 .ch-more label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .ch-more .ln{font-size:14px}
 .rw-list .add{margin-top:12px}
+.rsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:16px}
+.rsteps button{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:8px 2px 0;border-top:2px solid var(--line);font-size:11.5px;color:var(--ink-3);text-align:left;transition:color .2s,border-color .2s}
+.rsteps button i{font-style:italic;font-family:var(--serif);font-size:14px}
+.rsteps button.done{border-top-color:var(--curve);color:var(--ink-2)}
+.rsteps button.cur{border-top-color:var(--sage);color:var(--ink);font-weight:600}
+.rq{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.35;color:var(--sage);margin:0 0 18px;min-height:1.35em}
+#b-ruota[data-st="1"] .ch-range,#b-ruota[data-st="1"] .ch-val,#b-ruota[data-st="1"] .ch .star,#b-ruota[data-st="1"] .ch-more,
+#b-ruota[data-st="2"] .ch .star,#b-ruota[data-st="2"] .ch-more,
+#b-ruota[data-st="3"] .ch .star,#b-ruota[data-st="3"] .ch-obst,
+#b-ruota[data-st="4"] .ch .star{display:none}
+#b-ruota:not([data-st="1"]) #addCh{display:none}
+#b-ruota:not([data-st="5"]) .rlink{display:none}
+#b-ruota[data-st="1"] .ch-top{grid-template-columns:26px 1fr 26px}
+#b-ruota[data-st="1"] .ch{padding:10px 16px}
+#b-ruota[data-st="2"] .rw-dim{background:var(--sage-mist);border-radius:14px;padding:14px 16px;border-top-color:transparent}
+.ch-more{grid-template-columns:1fr 1fr}
+.ch-more .ch-obst{grid-column:1/-1}
+.rg-in.unset::-webkit-slider-thumb{opacity:.35}
+.rlink{margin-top:18px;padding:16px 18px;border-radius:16px;background:var(--sage-mist)}
+.rlink ul{list-style:none;margin:6px 0 14px}
+.rlink li{font-size:14px;padding:5px 0;border-bottom:1px solid rgba(94,117,96,.15)}
+.rlink li b{font-weight:600}
+.rlink .ln{background:transparent}
 .rw-note{font-size:12px;color:var(--ink-3);margin-top:14px;line-height:1.5}
 
 /* ================= restituzione: ruota ================= */
@@ -546,10 +569,10 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
             <div class="row-h"><p class="sl">Ruota della vita · cinque passaggi</p><button type="button" class="link" data-open="ruota">Apri sulla lavagna →</button></div>
             <ol class="nuclei">
               <li><b>Capitoli.</b><span>«Se la tua vita fosse un libro, quali sarebbero i capitoli principali?» Restituisci i nomi per verificarli.</span></li>
-              <li><b>Valutazione.</b><span>Definisci con la persona una sola dimensione e il significato di 0 e 100. Poi un numero per capitolo.</span></li>
+              <li><b>Valutazione.</b><span>Definisci con la persona una sola dimensione e il significato di 0 e 100. Poi un numero per capitolo. «Quando dici soddisfazione, che cosa stai valutando?»</span></li>
               <li><b>Cambiamento desiderato.</b><span>Prima di analizzare un’azione: «Che cosa vorresti ottenere attraverso questo cambiamento?»</span></li>
               <li><b>Cosa ha frenato.</b><span>«Che cosa ti ha frenato finora?»</span></li>
-              <li><b>Collegamenti e priorità.</b><span>Ostacoli che si ripetono tra aree: un’ipotesi da verificare, non una radice da presumere. «Da quale punto desideri partire oggi?»</span></li>
+              <li><b>Collegamenti e priorità.</b><span>Ostacoli che si ripetono tra aree: un’ipotesi da verificare, non una radice da presumere. «Da quale punto desideri partire oggi?» Se due sembrano ugualmente importanti: «Sei su una torre con entrambi e devi buttarne giù uno: quale butti?» È uno stimolo, non un obbligo di rinuncia.</span></li>
             </ol>
             <p class="warn">Non scegliere automaticamente il punteggio più basso: un’area soddisfacente può essere quella da proteggere. Ecologia: «Che impatto avrebbe questo cambiamento sulle altre aree e sulle persone importanti per te?»</p>
           </div>
@@ -707,8 +730,22 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
         </div>
       </div>
       <div class="rw-list">
+        <nav class="rsteps" id="rsteps" aria-label="Passaggi della ruota">
+          <button type="button" data-st="1"><i>1</i>Capitoli</button>
+          <button type="button" data-st="2"><i>2</i>Valutazione</button>
+          <button type="button" data-st="3"><i>3</i>Cambiamento</button>
+          <button type="button" data-st="4"><i>4</i>Cosa frena</button>
+          <button type="button" data-st="5"><i>5</i>Priorità</button>
+        </nav>
+        <p class="rq" id="rq"></p>
         <ol class="chs" id="chs"></ol>
         <button type="button" class="add" id="addCh">+ Aggiungi capitolo</button>
+        <div class="rlink" id="rlink">
+          <span class="k">Gli ostacoli, uno accanto all’altro</span>
+          <ul id="obsts"></ul>
+          <label class="k" for="legame">Un legame che noti, se ne noti uno</label>
+          <input class="ln" id="legame" data-rd="legame" placeholder="Da verificare insieme: ti risuona?">
+        </div>
         <p class="rw-note">Il numero apre il dialogo: è una valutazione tua, non una misura. La ★ indica da dove vuoi partire.</p>
       </div>
     </div>
@@ -1202,6 +1239,25 @@ function wheelMarkup(ch, opt={}){
   });
   return s;
 }
+const RSTEP_Q = {
+  1: "Se la tua vita fosse un libro, quali sarebbero i capitoli principali?",
+  2: () => S.ruota.dim ? `Da 0 a 100: ${S.ruota.dim}, in ciascun capitolo?` : "Prima di dare i numeri: che cosa misuriamo? Definiamo insieme cosa vogliono dire 0 e 100.",
+  3: "Quale cambiamento, anche piccolo, farebbe crescere questo capitolo? E che cosa vorresti ottenere attraverso quel cambiamento?",
+  4: "Che cosa ti ha frenato finora?",
+  5: "Da quale capitolo desideri partire oggi?"
+};
+function setRStep(n){
+  S.ruota.step = n; $("#b-ruota").dataset.st = n;
+  document.querySelectorAll("#rsteps button").forEach(b=>{ const k=+b.dataset.st; b.classList.toggle("cur",k===n); b.classList.toggle("done",k<n); });
+  const qq = RSTEP_Q[n]; $("#rq").textContent = typeof qq==="function" ? qq() : qq;
+  if (n===5) renderObsts();
+  save();
+}
+function renderObsts(){
+  const o = S.ruota.ch.filter(c=>c.name.trim() && c.obst && c.obst.trim());
+  $("#obsts").innerHTML = o.length ? o.map(c=>`<li><b>${esc(c.name)}</b> · ${esc(c.obst)}</li>`).join("") : `<li>Nessun ostacolo annotato.</li>`;
+}
+document.querySelectorAll("#rsteps button").forEach(b=>b.addEventListener("click",()=>setRStep(+b.dataset.st)));
 function renderWheel(){ $("#wheel").innerHTML = wheelMarkup(S.ruota.ch); }
 function quickWheel(i){
   const n = S.ruota.ch.length, c = S.ruota.ch[i];
@@ -1221,8 +1277,9 @@ function renderChs(){
         <input type="range" class="rg-in ch-range${c.score==null?" unset":""}" min="0" max="100" step="5" value="${c.score??50}" style="--p:${c.score??0}%" aria-label="Valutazione ${esc(c.name)}">
       </div>
       <div class="ch-more">
-        <label>Cosa vorresti cambiare<input class="ln" data-f="change" value="${esc(c.change)}"></label>
-        <label>Cosa ti ha frenato finora<input class="ln" data-f="obst" value="${esc(c.obst)}"></label>
+        <label>Cosa vorresti cambiare<input class="ln" data-f="change" value="${esc(c.change)}" placeholder="anche piccolo"></label>
+        <label>Per ottenere che cosa<input class="ln" data-f="goal" value="${esc(c.goal||"")}" placeholder="il risultato che cerchi"></label>
+        <label class="ch-obst">Cosa ti ha frenato finora<input class="ln" data-f="obst" value="${esc(c.obst)}"></label>
       </div>
     </li>`).join("");
   $("#addCh").hidden = S.ruota.ch.length >= 10;
@@ -1236,6 +1293,7 @@ $("#chs").addEventListener("input", e=>{
   } else if (e.target.dataset.f) {
     c[e.target.dataset.f] = e.target.value;
     if (e.target.dataset.f==="name") renderWheel();
+    if (S.ruota.step===5) renderObsts();
   }
   save();
 });
@@ -1247,11 +1305,11 @@ $("#chs").addEventListener("click", e=>{
   renderChs(); renderWheel(); save();
 });
 $("#addCh").addEventListener("click", ()=>{
-  S.ruota.ch.push({name:"",score:null,change:"",obst:"",prio:false});
+  S.ruota.ch.push({name:"",score:null,change:"",goal:"",obst:"",prio:false});
   renderChs(); renderWheel(); save();
   const ins = document.querySelectorAll("#chs .ch-name"); ins[ins.length-1].focus();
 });
-document.querySelectorAll("[data-rd]").forEach(inp=>inp.addEventListener("input",()=>{ S.ruota[inp.dataset.rd]=inp.value; save(); }));
+document.querySelectorAll("[data-rd]").forEach(inp=>inp.addEventListener("input",()=>{ S.ruota[inp.dataset.rd]=inp.value; if (inp.dataset.rd==="dim" && S.ruota.step===2) setRStep(2); save(); }));
 
 /* ---------- restituzione: ruota ---------- */
 function renderRestWheel(){
@@ -1261,7 +1319,7 @@ function renderRestWheel(){
   const ord = [...ch].sort((a,b)=>(b.prio?1:0)-(a.prio?1:0));
   const dim = S.ruota.dim ? `Il numero indica ${esc(S.ruota.dim)}${S.ruota.zero||S.ruota.cento?` (0 = ${esc(S.ruota.zero||"…")}, 100 = ${esc(S.ruota.cento||"…")})`:""}: è una tua valutazione, non una misura.` : "Ogni numero è una tua valutazione, non una misura.";
   box.innerHTML = ch.length ? `<svg class="wsvg small" viewBox="96 96 408 408" aria-hidden="true">${wheelMarkup(ch,{small:true})}</svg>
-    <ul class="wl">${ord.map(c=>`<li class="${c.prio?"prio":""}"><b><i class="ix">${String(ch.indexOf(c)+1).padStart(2,"0")}</i>${esc(c.name)}</b><span class="v">${c.score==null?"—":c.score}</span>${c.change?`<span class="c">${esc(c.change)}</span>`:""}</li>`).join("")}</ul>
+    <ul class="wl">${ord.map(c=>`<li class="${c.prio?"prio":""}"><b><i class="ix">${String(ch.indexOf(c)+1).padStart(2,"0")}</i>${esc(c.name)}</b><span class="v">${c.score==null?"—":c.score}</span>${c.change?`<span class="c">${esc(c.change)}${c.goal?` — per ${esc(c.goal)}`:""}</span>`:""}</li>`).join("")}</ul>
     <p class="dimnote">${dim}</p>` : "";
 }
 
@@ -1287,8 +1345,8 @@ function importa(){
   const cols = secsEl.querySelectorAll('[data-id="mappa"] .col ul');
   if (cols.length===3 && ch.length) {
     n += fillIfEmpty(cols[0], prio.map(c=>c.score==null?c.name:`${c.name} · ${c.score}`), true);
-    n += fillIfEmpty(cols[1], prio.filter(c=>c.obst).map(c=>`${c.name}: ${c.obst}`), true);
-    n += fillIfEmpty(cols[2], prio.filter(c=>c.change).map(c=>`${c.name}: ${c.change}`), true);
+    n += fillIfEmpty(cols[1], [...prio.filter(c=>c.obst).map(c=>`${c.name}: ${c.obst}`), ...(S.ruota.legame?[`Un legame da tenere d’occhio: ${S.ruota.legame}`]:[])], true);
+    n += fillIfEmpty(cols[2], prio.filter(c=>c.change||c.goal).map(c=>`${c.name}: ${c.goal||c.change}${c.goal&&c.change?` (${c.change})`:""}`), true);
   }
   const mvUsed = (C.mv_centro||"").trim() || (C.mv_coltivare||[]).length || (C.mv_persone||[]).length;
   if (mvUsed) {
@@ -1339,7 +1397,7 @@ document.querySelectorAll("[data-c]").forEach(c=>{ c.checked = !!S.checks[c.data
 document.querySelectorAll(".qs li").forEach(li=>li.classList.toggle("done", S.qs.includes(li.dataset.q)));
 document.querySelectorAll("[data-rd]").forEach(i=>{ i.value = S.ruota[i.dataset.rd]||""; });
 if (!S.ruota.ch.length) S.ruota.ch = [0,1,2].map(()=>({name:"",score:null,change:"",obst:"",prio:false}));
-writeCanvas(); renderChs(); renderWheel();
+writeCanvas(); renderChs(); renderWheel(); setRStep(S.ruota.step||1);
 $("#tGo").textContent = S.timer.at ? "Pausa" : (S.timer.acc ? "Riprendi" : "Avvia");
 setView(S.view||"regia"); tick();
 document.querySelectorAll(".phase[open] .ta").forEach(autosize);
