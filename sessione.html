@@ -389,23 +389,57 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
 .ch-more label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .ch-more .ln{font-size:14px}
 .rw-list .add{margin-top:12px}
-.rsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:16px}
+.rsteps{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:16px}
 .rsteps button{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:8px 2px 0;border-top:2px solid var(--line);font-size:11.5px;color:var(--ink-3);text-align:left;transition:color .2s,border-color .2s}
 .rsteps button i{font-style:italic;font-family:var(--serif);font-size:14px}
 .rsteps button.done{border-top-color:var(--curve);color:var(--ink-2)}
 .rsteps button.cur{border-top-color:var(--sage);color:var(--ink);font-weight:600}
 .rq{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.35;color:var(--sage);margin:0 0 18px;min-height:1.35em}
-#b-ruota[data-st="1"] .ch-range,#b-ruota[data-st="1"] .ch-val,#b-ruota[data-st="1"] .ch .star,#b-ruota[data-st="1"] .ch-more,
-#b-ruota[data-st="2"] .ch .star,#b-ruota[data-st="2"] .ch-more,
-#b-ruota[data-st="3"] .ch .star,#b-ruota[data-st="3"] .ch-obst,
-#b-ruota[data-st="4"] .ch .star{display:none}
+#b-ruota .ch-why,#b-ruota .ch-sl,#b-ruota .s-tgt,#b-ruota .gap-pill,#b-ruota .ch-more,#b-ruota .ch-more label,#b-ruota .ch .star,#b-ruota .ch-val{display:none}
+#b-ruota[data-st="1"] .ch-why,#b-ruota[data-st="6"] .ch-why{display:block}
+#b-ruota:not([data-st="1"]) .ch-val{display:block}
+#b-ruota:not([data-st="1"]) .ch-sl{display:grid}
+#b-ruota[data-st="3"] .s-tgt,#b-ruota[data-st="4"] .s-tgt,#b-ruota[data-st="5"] .s-tgt,#b-ruota[data-st="6"] .s-tgt{display:grid}
+#b-ruota[data-st="3"] .gap-pill,#b-ruota[data-st="4"] .gap-pill,#b-ruota[data-st="5"] .gap-pill,#b-ruota[data-st="6"] .gap-pill{display:inline-block}
+#b-ruota[data-st="4"] .ch-more,#b-ruota[data-st="5"] .ch-more,#b-ruota[data-st="6"] .ch-more{display:grid}
+#b-ruota[data-st="4"] .ch-more label:not(.ch-obst),#b-ruota[data-st="5"] .ch-more label,#b-ruota[data-st="6"] .ch-more label{display:block}
+#b-ruota[data-st="6"] .ch .star{display:grid}
 #b-ruota:not([data-st="1"]) #addCh{display:none}
-#b-ruota:not([data-st="5"]) .rlink{display:none}
-#b-ruota[data-st="1"] .ch-top{grid-template-columns:26px 1fr 26px}
-#b-ruota[data-st="1"] .ch{padding:10px 16px}
+#b-ruota:not([data-st="6"]) .rlink{display:none}
 #b-ruota[data-st="2"] .rw-dim{background:var(--sage-mist);border-radius:14px;padding:14px 16px;border-top-color:transparent}
-.ch-more{grid-template-columns:1fr 1fr}
+.ch-top{grid-template-columns:26px 1fr auto 30px 26px}
+.ch-val{min-width:54px}
+.ch-why{padding-left:34px;margin-top:2px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.ch-why .ln{font-size:14px;font-weight:400;letter-spacing:0;text-transform:none}
+.ch-sl{padding-left:34px;margin-top:6px;grid-template-columns:1fr;gap:2px;position:relative}
+.sl-row{display:grid;grid-template-columns:78px 1fr 34px;align-items:center;gap:10px}
+.sl-row .ch-range{grid-column:auto;margin:0}
+.sl-k{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sl-v{font-family:var(--serif);font-size:16px;text-align:right;color:var(--ink-2);font-variant-numeric:lining-nums}
+.rg-in.tgt::-webkit-slider-runnable-track{background:linear-gradient(90deg,var(--curve) var(--p,0%),var(--line) var(--p,0%));background-image:linear-gradient(90deg,var(--curve) var(--p,0%),var(--line) var(--p,0%))}
+.rg-in.tgt::-webkit-slider-thumb{border-style:dashed;background:var(--sage-mist)}
+.gap-pill{justify-self:end;margin-top:4px;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--sage);background:var(--sage-soft);padding:3px 10px;border-radius:999px}
+.gap-pill.off{visibility:hidden}
+.ch-more{display:none;grid-template-columns:1fr 1fr;gap:4px 16px;padding-left:34px;margin-top:6px}
 .ch-more .ch-obst{grid-column:1/-1}
+.book{display:flex;align-items:baseline;gap:16px;margin:4px 0 0;max-width:720px}
+.book .k{white-space:nowrap}
+.book-in{font-family:var(--serif);font-style:italic;font-size:24px;border-bottom-color:var(--line)}
+.wlegend{display:flex;gap:18px;justify-content:center;font-size:11.5px;color:var(--ink-2);margin:4px 0 0}
+.wlegend span{display:flex;align-items:center;gap:7px}
+.wlegend i{width:16px;height:10px;border-radius:2px;display:inline-block}
+.lg-now{background:rgba(94,117,96,.35);border:1px solid var(--sage)}
+.lg-gap{background:repeating-linear-gradient(135deg,rgba(94,117,96,.28) 0 2px,transparent 2px 5px);border:1px solid rgba(94,117,96,.35)}
+.lg-tgt{height:0!important;border-top:2px dashed var(--sage);border-radius:0!important}
+.wsvg .gapband{stroke:none;transition:d .45s cubic-bezier(.2,.7,.2,1)}
+.wsvg .tarc{fill:none;stroke:var(--sage);stroke-width:2;stroke-dasharray:5 4;transition:d .45s cubic-bezier(.2,.7,.2,1)}
+.wsvg .tarc.off{display:none}
+.booktitle{grid-column:1/-1;font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;margin-bottom:4px}
+.booktitle .k{display:block;font-style:normal;margin-bottom:4px}
+.wheelbox .wcol{display:flex;flex-direction:column;gap:8px}
+.wheelbox .wl .v small{font-family:var(--sans);font-size:11px;color:var(--sage);font-weight:600;margin-left:4px}
+.wheelbox .wl .c.why{font-style:italic;font-family:var(--serif);font-size:14.5px}
+.wheelbox .wl .c em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 .rg-in.unset::-webkit-slider-thumb{opacity:.35}
 .rlink{margin-top:18px;padding:16px 18px;border-radius:16px;background:var(--sage-mist)}
 .rlink ul{list-style:none;margin:6px 0 14px}
@@ -566,11 +600,12 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
             <p class="warn">L’ordine segue la conversazione. Non forzare una “sconfitta vincente”: se non emerge un apprendimento, non inventarlo. Responsabilità non è colpa né controllo totale.</p>
           </div>
           <div class="only-chiarezza">
-            <div class="row-h"><p class="sl">Ruota della vita · cinque passaggi</p><button type="button" class="link" data-open="ruota">Apri sulla lavagna →</button></div>
+            <div class="row-h"><p class="sl">Ruota della vita · sei passaggi</p><button type="button" class="link" data-open="ruota">Apri sulla lavagna →</button></div>
             <ol class="nuclei">
-              <li><b>Capitoli.</b><span>«Se la tua vita fosse un libro, quali sarebbero i capitoli principali?» Restituisci i nomi per verificarli.</span></li>
+              <li><b>Capitoli.</b><span>«Se la tua vita fosse un libro, quali sarebbero i capitoli principali?» «Perché proprio questi?» Restituisci i nomi per verificarli. Quando ti sembra il momento: «Che titolo daresti al libro?»</span></li>
               <li><b>Valutazione.</b><span>Definisci con la persona una sola dimensione e il significato di 0 e 100. Poi un numero per capitolo. «Quando dici soddisfazione, che cosa stai valutando?»</span></li>
-              <li><b>Cambiamento desiderato.</b><span>Prima di analizzare un’azione: «Che cosa vorresti ottenere attraverso questo cambiamento?»</span></li>
+              <li><b>Dove vorresti arrivare.</b><span>Il numero desiderato per ogni capitolo: non per forza 100. Il gap è una distanza, non una priorità.</span></li>
+              <li><b>Azione e risultato.</b><span>Un’azione anche piccola, e subito: «Che cosa vorresti ottenere attraverso questa azione?»</span></li>
               <li><b>Cosa ha frenato.</b><span>«Che cosa ti ha frenato finora?»</span></li>
               <li><b>Collegamenti e priorità.</b><span>Ostacoli che si ripetono tra aree: un’ipotesi da verificare, non una radice da presumere. «Da quale punto desideri partire oggi?» Se due sembrano ugualmente importanti: «Sei su una torre con entrambi e devi buttarne giù uno: quale butti?» È uno stimolo, non un obbligo di rinuncia.</span></li>
             </ol>
@@ -719,10 +754,12 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
     <header class="bd-head">
       <div class="bd-top"><span class="mark">HUMAN PERFORMANCE</span><span class="kind">Ruota della vita</span></div>
       <h1>Se la tua vita fosse un libro, <em>quali sarebbero i capitoli?</em></h1>
+      <div class="book"><span class="k">Il titolo del libro</span><input class="ln book-in" data-rd="titolo" placeholder="Che titolo gli daresti?"></div>
     </header>
     <div class="rw">
       <div class="rw-wheel">
         <svg id="wheel" class="wsvg" viewBox="0 0 600 600" role="img" aria-label="Ruota della vita"></svg>
+        <div class="wlegend"><span><i class="lg-now"></i>Oggi</span><span><i class="lg-gap"></i>Gap</span><span><i class="lg-tgt"></i>Desiderato</span></div>
         <div class="rw-dim">
           <span class="k">Cosa misura il numero</span>
           <input class="ln" data-rd="dim" placeholder="es. quanto mi sento realizzato">
@@ -732,10 +769,11 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
       <div class="rw-list">
         <nav class="rsteps" id="rsteps" aria-label="Passaggi della ruota">
           <button type="button" data-st="1"><i>1</i>Capitoli</button>
-          <button type="button" data-st="2"><i>2</i>Valutazione</button>
-          <button type="button" data-st="3"><i>3</i>Cambiamento</button>
-          <button type="button" data-st="4"><i>4</i>Cosa frena</button>
-          <button type="button" data-st="5"><i>5</i>Priorità</button>
+          <button type="button" data-st="2"><i>2</i>Oggi</button>
+          <button type="button" data-st="3"><i>3</i>Desiderato</button>
+          <button type="button" data-st="4"><i>4</i>Azione</button>
+          <button type="button" data-st="5"><i>5</i>Cosa frena</button>
+          <button type="button" data-st="6"><i>6</i>Priorità</button>
         </nav>
         <p class="rq" id="rq"></p>
         <ol class="chs" id="chs"></ol>
@@ -746,7 +784,7 @@ input[type=range].rg-in::-moz-range-thumb{width:16px;height:16px;border-radius:5
           <label class="k" for="legame">Un legame che noti, se ne noti uno</label>
           <input class="ln" id="legame" data-rd="legame" placeholder="Da verificare insieme: ti risuona?">
         </div>
-        <p class="rw-note">Il numero apre il dialogo: è una valutazione tua, non una misura. La ★ indica da dove vuoi partire.</p>
+        <p class="rw-note">Il numero apre il dialogo: è una valutazione tua, non una misura. Il gap mostra una distanza, non decide la priorità. La ★ indica da dove vuoi partire.</p>
       </div>
     </div>
   </article>
@@ -1213,44 +1251,66 @@ $("#b-mv").addEventListener("input", ()=>{ readCanvas(); save(); });
 /* ---------- ruota della vita ---------- */
 const CX=300, CY=300, R=196;
 function pt(r, deg){ const a = deg*Math.PI/180; return [CX + r*Math.cos(a), CY + r*Math.sin(a)]; }
-function wedgeD(i, n, score){
-  const span = 360/n, a0 = -90 + i*span, a1 = a0 + (n===1 ? 359.99 : span);
-  const r = R * Math.max(0, Math.min(100, score||0)) / 100;
+const cl = v => Math.max(0, Math.min(100, v||0));
+/* settore ad anello tra due valori (0–100): stessa struttura di comandi sempre, per l'animazione */
+function ringD(i, n, v0, v1){
+  const span = 360/n, a0 = -90 + i*span, a1 = a0 + (n===1 ? 359.99 : span), big = span>180?1:0;
+  const r0 = R*cl(v0)/100, r1 = R*cl(v1)/100;
+  const [ox0,oy0]=pt(r1,a0), [ox1,oy1]=pt(r1,a1), [ix1,iy1]=pt(r0,a1), [ix0,iy0]=pt(r0,a0);
+  const f = x=>x.toFixed(2);
+  return `M${f(ox0)} ${f(oy0)} A${f(r1)} ${f(r1)} 0 ${big} 1 ${f(ox1)} ${f(oy1)} L${f(ix1)} ${f(iy1)} A${f(r0)} ${f(r0)} 0 ${big} 0 ${f(ix0)} ${f(iy0)} Z`;
+}
+function arcD(i, n, v){
+  const span = 360/n, a0 = -90 + i*span, a1 = a0 + (n===1 ? 359.99 : span), r = R*cl(v)/100;
   const [x0,y0]=pt(r,a0), [x1,y1]=pt(r,a1);
-  return `M${CX} ${CY} L${x0.toFixed(2)} ${y0.toFixed(2)} A${r.toFixed(2)} ${r.toFixed(2)} 0 ${span>180?1:0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`;
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)} A${r.toFixed(2)} ${r.toFixed(2)} 0 ${span>180?1:0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+}
+const hasT = c => c.target!=null && c.target!=="";
+function gapOf(c){ return (c.score!=null && hasT(c)) ? c.target - c.score : null; }
+function valTxt(c){
+  if (c.score==null) return "—";
+  return hasT(c) ? `${c.score} → ${c.target}` : String(c.score);
 }
 function wheelMarkup(ch, opt={}){
   const n = ch.length, named = ch.filter(c=>c.name.trim()).length;
-  let s = "";
+  const hid = opt.small ? "hatchS" : "hatchL";
+  let s = `<defs><pattern id="${hid}" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="rgba(94,117,96,.08)"/><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(94,117,96,.42)" stroke-width="2"/></pattern></defs>`;
   [25,50,75,100].forEach(v=>{ s += `<circle class="ring${v===100?" outer":""}" cx="${CX}" cy="${CY}" r="${R*v/100}"/>`; });
   if (n>1) for (let i=0;i<n;i++){ const [x,y]=pt(R,-90+i*360/n); s += `<line class="spoke" x1="${CX}" y1="${CY}" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}"/>`; }
   if (!opt.small) [50,100].forEach(v=>{ s += `<text class="tick" x="${CX+4}" y="${CY-R*v/100+12}">${v}</text>`; });
-  s += `<g class="wedges">` + ch.map((c,i)=>`<path class="wedge${c.prio?" prio":""}" data-i="${i}" d="${wedgeD(i,n,c.score)}"/>`).join("") + `</g>`;
+  s += `<g class="wedges">` + ch.map((c,i)=>{
+    const sc = c.score||0, tg = hasT(c) ? c.target : sc;
+    return `<path class="gapband" fill="url(#${hid})" data-i="${i}" d="${ringD(i,n,Math.min(sc,tg),Math.max(sc,tg))}"/>`
+         + `<path class="wedge${c.prio?" prio":""}" data-i="${i}" d="${ringD(i,n,0,sc)}"/>`
+         + `<path class="tarc${hasT(c)?"":" off"}" data-i="${i}" d="${arcD(i,n,tg)}"/>`;
+  }).join("") + `</g>`;
   s += `<circle class="hub" cx="${CX}" cy="${CY}" r="3.5"/>`;
   if (!named) { s += `<text class="empty-t" x="${CX}" y="${CY+R+46}" text-anchor="middle">Aggiungi i capitoli</text>`; return s; }
-  if (opt.small) { ch.forEach((c,i)=>{ const mid=-90+(i+.5)*360/n, [x,y]=pt(R*.82,mid); s += `<text class="lbl-i" x="${x.toFixed(1)}" y="${(y+6).toFixed(1)}" text-anchor="middle">${String(i+1).padStart(2,"0")}</text>`; }); return s; }
+  if (opt.small) { ch.forEach((c,i)=>{ const mid=-90+(i+.5)*360/n, [x,y]=pt(R+22,mid); s += `<text class="lbl-i" x="${x.toFixed(1)}" y="${(y+6).toFixed(1)}" text-anchor="middle">${String(i+1).padStart(2,"0")}</text>`; }); return s; }
   ch.forEach((c,i)=>{
     const mid = -90 + (i+.5)*360/n, [lx,ly] = pt(R+30, mid), cos = Math.cos(mid*Math.PI/180), sin = Math.sin(mid*Math.PI/180);
     const anchor = Math.abs(cos)<.3 ? "middle" : (cos>0 ? "start" : "end");
     const name = (c.name.trim()||"—"); const nm = name.length>20 ? name.slice(0,19)+"…" : name;
     const dy = sin < -.3 ? -12 : (sin > .3 ? 6 : -4);
     s += `<text class="lbl-n" x="${lx.toFixed(1)}" y="${(ly+dy).toFixed(1)}" text-anchor="${anchor}">${esc(nm)}</text>`;
-    s += `<text class="lbl-v${c.prio?" prio":""}" data-v="${i}" x="${lx.toFixed(1)}" y="${(ly+dy+17).toFixed(1)}" text-anchor="${anchor}">${c.score==null?"—":c.score}${c.prio?"  ★":""}</text>`;
+    s += `<text class="lbl-v${c.prio?" prio":""}" data-v="${i}" x="${lx.toFixed(1)}" y="${(ly+dy+17).toFixed(1)}" text-anchor="${anchor}">${valTxt(c)}${c.prio?"  ★":""}</text>`;
   });
   return s;
 }
 const RSTEP_Q = {
-  1: "Se la tua vita fosse un libro, quali sarebbero i capitoli principali?",
-  2: () => S.ruota.dim ? `Da 0 a 100: ${S.ruota.dim}, in ciascun capitolo?` : "Prima di dare i numeri: che cosa misuriamo? Definiamo insieme cosa vogliono dire 0 e 100.",
-  3: "Quale cambiamento, anche piccolo, farebbe crescere questo capitolo? E che cosa vorresti ottenere attraverso quel cambiamento?",
-  4: "Che cosa ti ha frenato finora?",
-  5: "Da quale capitolo desideri partire oggi?"
+  1: "Se la tua vita fosse un libro, quali sarebbero i capitoli principali? E perché proprio questi?",
+  2: () => S.ruota.dim ? `Da 0 a 100: ${S.ruota.dim}, oggi, in ciascun capitolo?` : "Prima di dare i numeri: che cosa misuriamo? Definiamo insieme cosa vogliono dire 0 e 100.",
+  3: "E dove vorresti arrivare? Quale numero sarebbe giusto per te, in ciascun capitolo?",
+  4: "Quale azione, anche piccola, vuoi mettere in pratica? E per ottenere che cosa?",
+  5: "Che cosa ti ha frenato finora?",
+  6: "Da quale capitolo desideri partire oggi?"
 };
+const LAST = 6;
 function setRStep(n){
   S.ruota.step = n; $("#b-ruota").dataset.st = n;
   document.querySelectorAll("#rsteps button").forEach(b=>{ const k=+b.dataset.st; b.classList.toggle("cur",k===n); b.classList.toggle("done",k<n); });
   const qq = RSTEP_Q[n]; $("#rq").textContent = typeof qq==="function" ? qq() : qq;
-  if (n===5) renderObsts();
+  if (n===LAST) renderObsts();
   save();
 }
 function renderObsts(){
@@ -1260,10 +1320,13 @@ function renderObsts(){
 document.querySelectorAll("#rsteps button").forEach(b=>b.addEventListener("click",()=>setRStep(+b.dataset.st)));
 function renderWheel(){ $("#wheel").innerHTML = wheelMarkup(S.ruota.ch); }
 function quickWheel(i){
-  const n = S.ruota.ch.length, c = S.ruota.ch[i];
-  const p = $(`.wsvg .wedge[data-i="${i}"]`); if (p) p.setAttribute("d", wedgeD(i,n,c.score));
-  const t = $(`.wsvg .lbl-v[data-v="${i}"]`); if (t) t.textContent = (c.score==null?"—":c.score) + (c.prio?"  ★":"");
+  const n = S.ruota.ch.length, c = S.ruota.ch[i], sc = c.score||0, tg = hasT(c) ? c.target : sc;
+  const w = $(`#wheel .wedge[data-i="${i}"]`); if (w) w.setAttribute("d", ringD(i,n,0,sc));
+  const g = $(`#wheel .gapband[data-i="${i}"]`); if (g) g.setAttribute("d", ringD(i,n,Math.min(sc,tg),Math.max(sc,tg)));
+  const a = $(`#wheel .tarc[data-i="${i}"]`); if (a) { a.setAttribute("d", arcD(i,n,tg)); a.classList.toggle("off", !hasT(c)); }
+  const t = $(`#wheel .lbl-v[data-v="${i}"]`); if (t) t.textContent = valTxt(c) + (c.prio?"  ★":"");
 }
+function gapTxt(c){ const g = gapOf(c); return g==null ? "" : (g>0 ? `gap +${g}` : g<0 ? `${g}` : "gap 0"); }
 function renderChs(){
   const ol = $("#chs");
   ol.innerHTML = S.ruota.ch.map((c,i)=>`
@@ -1271,14 +1334,19 @@ function renderChs(){
       <div class="ch-top">
         <span class="ch-n">${String(i+1).padStart(2,"0")}</span>
         <input class="ln ch-name" data-f="name" placeholder="Nome del capitolo" value="${esc(c.name)}">
-        <span class="ch-val${c.score==null?" none":""}">${c.score==null?"—":c.score}</span>
+        <span class="ch-val${c.score==null?" none":""}">${valTxt(c)}</span>
         <button type="button" class="ic star" title="Da qui vuoi partire" aria-pressed="${!!c.prio}">★</button>
         <button type="button" class="ic del" title="Rimuovi">×</button>
-        <input type="range" class="rg-in ch-range${c.score==null?" unset":""}" min="0" max="100" step="5" value="${c.score??50}" style="--p:${c.score??0}%" aria-label="Valutazione ${esc(c.name)}">
+      </div>
+      <label class="ch-why">Perché questo capitolo<input class="ln" data-f="why" value="${esc(c.why||"")}" placeholder="che cosa lo rende importante"></label>
+      <div class="ch-sl">
+        <div class="sl-row s-now"><span class="sl-k">Oggi</span><input type="range" class="rg-in ch-range${c.score==null?" unset":""}" data-r="score" min="0" max="100" step="5" value="${c.score??50}" style="--p:${c.score??0}%" aria-label="Oggi ${esc(c.name)}"><span class="sl-v">${c.score??"—"}</span></div>
+        <div class="sl-row s-tgt"><span class="sl-k">Desiderato</span><input type="range" class="rg-in ch-range tgt${hasT(c)?"":" unset"}" data-r="target" min="0" max="100" step="5" value="${hasT(c)?c.target:(c.score??50)}" style="--p:${hasT(c)?c.target:0}%" aria-label="Desiderato ${esc(c.name)}"><span class="sl-v">${hasT(c)?c.target:"—"}</span></div>
+        <span class="gap-pill${gapOf(c)==null?" off":""}">${gapTxt(c)}</span>
       </div>
       <div class="ch-more">
-        <label>Cosa vorresti cambiare<input class="ln" data-f="change" value="${esc(c.change)}" placeholder="anche piccolo"></label>
-        <label>Per ottenere che cosa<input class="ln" data-f="goal" value="${esc(c.goal||"")}" placeholder="il risultato che cerchi"></label>
+        <label>Azione<input class="ln" data-f="change" value="${esc(c.change)}" placeholder="anche piccola"></label>
+        <label>Per ottenere…<input class="ln" data-f="goal" value="${esc(c.goal||"")}" placeholder="il risultato che cerchi"></label>
         <label class="ch-obst">Cosa ti ha frenato finora<input class="ln" data-f="obst" value="${esc(c.obst)}"></label>
       </div>
     </li>`).join("");
@@ -1287,25 +1355,28 @@ function renderChs(){
 $("#chs").addEventListener("input", e=>{
   const li = e.target.closest(".ch"); if(!li) return; const i=+li.dataset.i, c=S.ruota.ch[i];
   if (e.target.classList.contains("ch-range")) {
-    c.score = +e.target.value; e.target.classList.remove("unset"); e.target.style.setProperty("--p", c.score+"%");
-    const v = li.querySelector(".ch-val"); v.textContent=c.score; v.classList.remove("none");
+    const k = e.target.dataset.r, v = +e.target.value;
+    c[k] = v; e.target.classList.remove("unset"); e.target.style.setProperty("--p", v+"%");
+    e.target.parentNode.querySelector(".sl-v").textContent = v;
+    const val = li.querySelector(".ch-val"); val.textContent = valTxt(c); val.classList.toggle("none", c.score==null);
+    const gp = li.querySelector(".gap-pill"); gp.textContent = gapTxt(c); gp.classList.toggle("off", gapOf(c)==null);
     quickWheel(i);
   } else if (e.target.dataset.f) {
     c[e.target.dataset.f] = e.target.value;
     if (e.target.dataset.f==="name") renderWheel();
-    if (S.ruota.step===5) renderObsts();
+    if (S.ruota.step===LAST) renderObsts();
   }
   save();
 });
 $("#chs").addEventListener("click", e=>{
   const li = e.target.closest(".ch"); if(!li) return; const i=+li.dataset.i;
   if (e.target.closest(".star")) { const on=!S.ruota.ch[i].prio; S.ruota.ch.forEach(c=>c.prio=false); S.ruota.ch[i].prio=on; }
-  else if (e.target.closest(".del")) { const c=S.ruota.ch[i]; if ((c.name||c.change||c.obst) && !confirm(`Rimuovere “${c.name||"questo capitolo"}”?`)) return; S.ruota.ch.splice(i,1); }
+  else if (e.target.closest(".del")) { const c=S.ruota.ch[i]; if ((c.name||c.change||c.obst||c.why) && !confirm(`Rimuovere “${c.name||"questo capitolo"}”?`)) return; S.ruota.ch.splice(i,1); }
   else return;
   renderChs(); renderWheel(); save();
 });
 $("#addCh").addEventListener("click", ()=>{
-  S.ruota.ch.push({name:"",score:null,change:"",goal:"",obst:"",prio:false});
+  S.ruota.ch.push({name:"",why:"",score:null,target:null,change:"",goal:"",obst:"",prio:false});
   renderChs(); renderWheel(); save();
   const ins = document.querySelectorAll("#chs .ch-name"); ins[ins.length-1].focus();
 });
@@ -1313,14 +1384,18 @@ document.querySelectorAll("[data-rd]").forEach(inp=>inp.addEventListener("input"
 
 /* ---------- restituzione: ruota ---------- */
 function renderRestWheel(){
-  const sec = secsEl.querySelector('[data-id="ruota"]'); if (!sec) return;
+  const sec = secsEl.querySelector('#secs > [data-id="ruota"]'); if (!sec) return;
   const box = sec.querySelector(".wheelbox"); if (!box) return;
   const ch = S.ruota.ch.filter(c=>c.name.trim());
   const ord = [...ch].sort((a,b)=>(b.prio?1:0)-(a.prio?1:0));
+  const anyT = ch.some(hasT);
   const dim = S.ruota.dim ? `Il numero indica ${esc(S.ruota.dim)}${S.ruota.zero||S.ruota.cento?` (0 = ${esc(S.ruota.zero||"…")}, 100 = ${esc(S.ruota.cento||"…")})`:""}: è una tua valutazione, non una misura.` : "Ogni numero è una tua valutazione, non una misura.";
-  box.innerHTML = ch.length ? `<svg class="wsvg small" viewBox="96 96 408 408" aria-hidden="true">${wheelMarkup(ch,{small:true})}</svg>
-    <ul class="wl">${ord.map(c=>`<li class="${c.prio?"prio":""}"><b><i class="ix">${String(ch.indexOf(c)+1).padStart(2,"0")}</i>${esc(c.name)}</b><span class="v">${c.score==null?"—":c.score}</span>${c.change?`<span class="c">${esc(c.change)}${c.goal?` — per ${esc(c.goal)}`:""}</span>`:""}</li>`).join("")}</ul>
-    <p class="dimnote">${dim}</p>` : "";
+  const title = (S.ruota.titolo||"").trim();
+  box.innerHTML = ch.length ? `${title?`<p class="booktitle"><span class="k">Il titolo del tuo libro</span>«${esc(title)}»</p>`:""}
+    <div class="wcol"><svg class="wsvg small" viewBox="80 80 440 440" aria-hidden="true">${wheelMarkup(ch,{small:true})}</svg>
+    ${anyT?`<div class="wlegend"><span><i class="lg-now"></i>Oggi</span><span><i class="lg-gap"></i>Gap</span><span><i class="lg-tgt"></i>Desiderato</span></div>`:""}</div>
+    <ul class="wl">${ord.map(c=>{ const g=gapOf(c); return `<li class="${c.prio?"prio":""}"><b><i class="ix">${String(ch.indexOf(c)+1).padStart(2,"0")}</i>${esc(c.name)}</b><span class="v">${valTxt(c)}${g!=null&&g!==0?`<small> ${g>0?"+":""}${g}</small>`:""}</span>${c.why?`<span class="c why">${esc(c.why)}</span>`:""}${c.change||c.goal?`<span class="c">${c.change?`<em>Azione:</em> ${esc(c.change)}`:""}${c.goal?`${c.change?" — ":""}<em>per</em> ${esc(c.goal)}`:""}</span>`:""}</li>`; }).join("")}</ul>
+    <p class="dimnote">${dim}${anyT?" Il gap indica una distanza, non una priorità.":""}</p>` : "";
 }
 
 /* ---------- importa dalla sessione nella restituzione ---------- */
@@ -1345,8 +1420,9 @@ function importa(){
   const cols = secsEl.querySelectorAll('[data-id="mappa"] .col ul');
   if (cols.length===3 && ch.length) {
     n += fillIfEmpty(cols[0], prio.map(c=>c.score==null?c.name:`${c.name} · ${c.score}`), true);
-    n += fillIfEmpty(cols[1], [...prio.filter(c=>c.obst).map(c=>`${c.name}: ${c.obst}`), ...(S.ruota.legame?[`Un legame da tenere d’occhio: ${S.ruota.legame}`]:[])], true);
-    n += fillIfEmpty(cols[2], prio.filter(c=>c.change||c.goal).map(c=>`${c.name}: ${c.goal||c.change}${c.goal&&c.change?` (${c.change})`:""}`), true);
+    const gaps = prio.filter(c=>gapOf(c)!=null && gapOf(c)!==0).map(c=>`${c.name}: da ${c.score} a ${c.target}`);
+    n += fillIfEmpty(cols[1], [...gaps, ...prio.filter(c=>c.obst).map(c=>`${c.name}: ${c.obst}`), ...(S.ruota.legame?[`Un legame da tenere d’occhio: ${S.ruota.legame}`]:[])], true);
+    n += fillIfEmpty(cols[2], prio.filter(c=>c.change||c.goal||hasT(c)).map(c=>`${c.name}${hasT(c)?` · ${c.target}`:""}${c.goal?`: per ${c.goal}`:""}${c.change?` — ${c.goal?"azione":"azione"}: ${c.change}`:""}`), true);
   }
   const mvUsed = (C.mv_centro||"").trim() || (C.mv_coltivare||[]).length || (C.mv_persone||[]).length;
   if (mvUsed) {
@@ -1359,7 +1435,8 @@ function importa(){
   n += fillIfEmpty(q("frase",".quote"), (C.lezione||"").trim() || (N.porta||"").trim());
   n += fillIfEmpty(q("aperta",".quote"), N.aperta);
   const st = secsEl.querySelectorAll('[data-id="passo"] .step .f');
-  if (st.length) { n += fillIfEmpty(st[0], N.passo); n += fillIfEmpty(st[1], N.quando); }
+  const pc = ch.find(c=>c.prio && c.change);
+  if (st.length) { n += fillIfEmpty(st[0], N.passo || (pc ? `${pc.change}${pc.goal?`, per ${pc.goal}`:""}` : "")); n += fillIfEmpty(st[1], N.quando); }
   renderRestWheel(); refreshEmpty(); updatePageCss(); save();
   toast(n ? `Importati ${n} campi. Rileggi e correggi: le parole devono restare quelle della persona.` : "Niente da importare: i campi sono già compilati o gli appunti sono vuoti.");
   if (N.escludi && N.escludi.trim()) setTimeout(()=>toast("Ricorda cosa non includere: " + N.escludi.trim()), 3600);
